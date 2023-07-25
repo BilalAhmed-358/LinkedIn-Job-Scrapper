@@ -14,6 +14,7 @@ def is_valid_url(url):
         return False
 
 
+# declaring custom css for the webpage
 css = """
     <style>
     .stButton>button {
@@ -25,8 +26,11 @@ css = """
     font-size: 20px;
     }
     </style>
+    
     """
+st.set_page_config(page_title="LinkedIn jobs", page_icon="favicon.ico")
 st.markdown(css, unsafe_allow_html=True,)
+
 
 st.subheader("Add new company")
 # taking input of new companies
