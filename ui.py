@@ -19,12 +19,12 @@ new_company_url = st.text_input("Enter the linkedin url of the company", "")
 if is_valid_url(new_company_url):
     success_placeholder = st.empty()
     success_placeholder.success("new_company" + " added on the sidebar " + "!")
-    time.sleep(2)  # Wait for 2 seconds
+    time.sleep(1) 
     success_placeholder.empty()
 else:
     failure_placeholder = st.empty()
     e = RuntimeError("Please provide a valid url!")
     failure_placeholder.exception(e)
-    time.sleep(2)  # Wait for 2 seconds
+    time.sleep(1)
     failure_placeholder.empty()
 show_pages_from_config()
