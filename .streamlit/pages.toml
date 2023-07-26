@@ -1,0 +1,9 @@
+[[pages]]
+path = "ui.py"
+name = "Home"
+icon = "🏠"
+
+[[pages]]
+path = "companies/Patchstack.py"
+name = "Patchstack"
+icon = ""
