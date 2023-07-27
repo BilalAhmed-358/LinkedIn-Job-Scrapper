@@ -1,8 +1,10 @@
 import streamlit as st
-from pathlib import Path
 from st_pages import show_pages_from_config
 import time
+import os
+import sys
 import requests
+from Services.createNewCompany import addNewCompany
 
 
 def is_valid_url(url):
@@ -39,6 +41,7 @@ new_company_url = st.text_input(
 if st.button("Add"):
     if is_valid_url(new_company_url):
         success_placeholder = st.empty()
+        addNewCompany(new_company_url)
         success_placeholder.success(
             "new_company" + " added on the sidebar " + "!")
         time.sleep(1)
