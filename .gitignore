@@ -2,4 +2,6 @@
 secrets.txt
 test.py
 Services/__pycache__
+Services/.cph
 Services/__init__.py
+credentials.txt
