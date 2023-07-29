@@ -10,6 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 import streamlit as st
 from Services.ExtractCompanyName import extract_company_name
+import os
 
 # Creates a new driver session
 
@@ -86,14 +87,32 @@ def loginToLinkedin(driver):
 
 
 def createCompanyPage(companyName):
-    ##
-    return True
+    fileName = companyName+".py"
+    # creating the separate page for the company
+    filePath = os.path.join("Services", fileName)
+
+    # writing the boiler plate code that will be present in the company page
+    file_code = f"""
+import streamlit as st
+from st_pages import add_page_title
+
+add_page_title(layout="wide")
+
+st.write("This is the page for {companyName} company")
+"""
+    if not os.path.exists(filePath):
+        with open(filePath, "w") as file:
+            file.write(file_code)
+    else:
+        print(f"The company {companyName} already exists in the directory")
+
 
 def addNewCompany(Url):
     driver = getDriver()
     companyUrl = generateCompanyUrl(Url)
     loginToLinkedin(driver)
     driver.get(companyUrl)
-    companyName=extract_company_name(companyUrl)
+    companyName = extract_company_name(companyUrl)
+    createCompanyPage(companyName)
     sleep(10)
     close_driver(driver)
