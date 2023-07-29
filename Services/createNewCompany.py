@@ -83,13 +83,13 @@ def loginToLinkedin(driver):
     sleep(0.5)
     sign_in_button = driver.find_element(By.XPATH, '//*[@type="submit"]')
     sign_in_button.click()
-    # sleep(0.5)
+    sleep(10)
 
 
 def createCompanyPage(companyName):
     fileName = companyName+".py"
     # creating the separate page for the company
-    filePath = os.path.join("Services", fileName)
+    filePath = os.path.join("companies", fileName)
 
     # writing the boiler plate code that will be present in the company page
     file_code = f"""
@@ -105,6 +105,19 @@ st.write("This is the page for {companyName} company")
             file.write(file_code)
     else:
         print(f"The company {companyName} already exists in the directory")
+
+    # modifying the pages.toml file to show the newly added page in the side menu
+    toml_file_code = f"""
+    
+[[pages]]
+path = "companies/{fileName}"
+name = "{companyName}"
+icon = ""
+"""
+
+    with open(".streamlit/pages.toml", "a") as file:
+        file.write(toml_file_code)
+    st.experimental_rerun()
 
 
 def addNewCompany(Url):
