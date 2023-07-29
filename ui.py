@@ -37,6 +37,8 @@ st.markdown(css, unsafe_allow_html=True,)
 st.subheader("Add new company")
 # taking input of new companies
 with st.form("url_input"):
+    st.text(
+        "The link format should be ' https://www.linkedin.com/company/<companyname>'")
     new_company_url = st.text_input(
         "Enter the linkedin url of the company", "")
     submitted = st.form_submit_button("Add")
