@@ -9,7 +9,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 import streamlit as st
-from Services.ExtractWebsiteName import extract_website_name
+from Services.ExtractCompanyName import extract_company_name
 
 # Creates a new driver session
 
@@ -85,11 +85,15 @@ def loginToLinkedin(driver):
     # sleep(0.5)
 
 
+def createCompanyPage(companyName):
+    ##
+    return True
+
 def addNewCompany(Url):
     driver = getDriver()
     companyUrl = generateCompanyUrl(Url)
     loginToLinkedin(driver)
     driver.get(companyUrl)
+    companyName=extract_company_name(companyUrl)
     sleep(10)
     close_driver(driver)
-    print(extract_website_name(companyUrl), "was added to the database")

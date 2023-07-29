@@ -1,7 +1,7 @@
 from urllib.parse import urlparse
 
 
-def extract_website_name(url):
+def extract_company_name(url):
     parsed_url = urlparse(url)
     path = parsed_url.path
 
