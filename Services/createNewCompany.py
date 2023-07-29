@@ -10,24 +10,23 @@ from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 import streamlit as st
 
-global driver
 
-driver = None
+def getDriver():
+    opts = Options()
+    # opts.add_argument("--remote-debugging-port=9225")
+    service_ = Service(executable_path='chromedriver.exe')
+    try:
+        driver = webdriver.Chrome(options=opts, service=service_)
+    except Exception as e:
+        print("Driver couldn't be created error is ", e)
+
+    driver.maximize_window()
+    return driver
 
 
-def create_driver():
-    global driver
-    if driver is None:
-        opts = Options()
-        # opts.add_argument("--remote-debugging-port=9225")
-        service_ = Service(executable_path='chromedriver.exe')
-        try:
-            driver = webdriver.Chrome(options=opts, service=service_)
-        except Exception as e:
-            print("Driver couldn't be created error is ", e)
-
-        driver.maximize_window()
-    print("Driver created")
+def close_driver(driver):
+    driver.close()
+    driver.quit()
 
 
 def read_email_and_password_from_file(filename="credentials.txt"):
@@ -49,8 +48,7 @@ def read_email_and_password_from_file(filename="credentials.txt"):
 
 
 def addNewCompany(companyUrl):
-    global driver
-    create_driver()
+    driver = getDriver()
     # if the link contains '/' as the last character
 
     if (companyUrl[len(companyUrl)-1] == '/'):
@@ -76,4 +74,4 @@ def addNewCompany(companyUrl):
     sleep(2)
     driver.get(companyUrl)
     sleep(10)
-    driver.quit()
+    close_driver(driver)
