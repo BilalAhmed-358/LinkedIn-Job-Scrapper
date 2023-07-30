@@ -88,6 +88,7 @@ def loginToLinkedin(driver):
 
 
 def createCompanyPage(companyName, link_data):
+    new_File=True
     fileName = companyName+".py"
     # creating the separate page for the company
     filePath = os.path.join("companies", fileName)
@@ -111,10 +112,12 @@ for i in range(len(job_list_for_company)):
         with open(filePath, "w") as file:
             file.write(file_code)
     else:
+        new_File=False
         print(f"The company {companyName} already exists in the directory")
 
     # modifying the pages.toml file to show the newly added page in the side menu
-    toml_file_code = f"""
+    if new_File:
+        toml_file_code = f"""
     
 [[pages]]
 path = "companies/{fileName}"
@@ -122,9 +125,9 @@ name = "{companyName}"
 icon = ""
 """
 
-    with open(".streamlit/pages.toml", "a") as file:
-        file.write(toml_file_code)
-    st.experimental_rerun()
+        with open(".streamlit/pages.toml", "a") as file:
+            file.write(toml_file_code)
+        st.experimental_rerun()
 
 
 def scrapData(url, driver):
