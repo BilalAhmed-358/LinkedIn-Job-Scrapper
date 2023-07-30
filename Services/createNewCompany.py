@@ -134,11 +134,15 @@ def scrapData(url, driver):
         print("There are jobs in this company!")
         # Get the element by the JS selector
         print("Now selecting the job, hopefully everything goes well")
-        element = driver.find_element(
-            By.CLASS_NAME, "artdeco-carousel__slider")
-        child_elements = element.find_element(By.XPATH, ".//*")
-        for i in child_elements:
-            print(i)
+        job_list = driver.find_element(
+            By.CSS_SELECTOR, ".artdeco-carousel__slider")
+        children = job_list.find_elements(By.XPATH, '*')
+        noOfChildren = len(children)
+        limitOfJobs = min(noOfChildren, 3)
+        print("Limit is ",limitOfJobs)
+        # for child in children:
+        #     print("\nChild Element")
+        #     print(child.get_attribute('outerHTML'))
         print("chal gaya!")
         # # Get the href attribute of the element
         # href = element.get_attribute("href")
