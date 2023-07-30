@@ -9,8 +9,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 import streamlit as st
-from Services.ExtractCompanyName import extract_company_name
 import os
+from Services.ExtractCompanyName import extract_company_name
+
 
 # Creates a new driver session
 
@@ -120,12 +121,27 @@ icon = ""
     st.experimental_rerun()
 
 
+def scrapData(url, driver):
+    driver.get(url)
+    emptyJobsClassName = "org-jobs-empty-jobs-module"
+    try:
+        element = driver.find_element(By.CLASS_NAME, emptyJobsClassName)
+        print("There are no jobs in this company!")
+        st.warning(
+            "There are no jobs in this company at the moment, Try again in a few days", "☹")
+        return []
+    except:
+        print("There are jobs in this company!")
+
+
 def addNewCompany(Url):
     driver = getDriver()
     companyUrl = generateCompanyUrl(Url)
     loginToLinkedin(driver)
     driver.get(companyUrl)
     companyName = extract_company_name(companyUrl)
-    createCompanyPage(companyName)
+    data = scrapData(companyUrl, driver)
+    # if data:
+    #     createCompanyPage(companyName)
     sleep(10)
     close_driver(driver)
