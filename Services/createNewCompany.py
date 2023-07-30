@@ -133,23 +133,31 @@ def scrapData(url, driver):
     except NoSuchElementException:
         print("There are jobs in this company!")
         # Get the element by the JS selector
-        print("Now selecting the job, hopefully everything goes well")
+        # print("Now selecting the job, hopefully everything goes well")
         job_list = driver.find_element(
             By.CSS_SELECTOR, ".artdeco-carousel__slider")
         children = job_list.find_elements(By.XPATH, '*')
         noOfChildren = len(children)
         limitOfJobs = min(noOfChildren, 3)
-        print("Limit is ",limitOfJobs)
+        print("Limit is ", limitOfJobs)
+        job_links = []
+        for i in range(3):
+            post_link = driver.find_element(
+                By.CSS_SELECTOR, f".artdeco-carousel__slider>li[data-item-index='{i}']>.artdeco-carousel__item-container>.full-height>.full-height>.job-card-container>.job-card-square__main>a")
+            href = post_link.get_attribute("href")
+            job_links.append(href)
+
+            # print(href)
         # for child in children:
         #     print("\nChild Element")
         #     print(child.get_attribute('outerHTML'))
-        print("chal gaya!")
+        # print("chal gaya!")
         # # Get the href attribute of the element
         # href = element.get_attribute("href")
 
         # # Print the href attribute
         # print(href)
-        return True
+        return job_links
 
 
 def addNewCompany(Url):
@@ -159,7 +167,7 @@ def addNewCompany(Url):
     driver.get(companyUrl)
     companyName = extract_company_name(companyUrl)
     data = scrapData(companyUrl, driver)
-    print("the value of data is", data)
+    # print("the value of data is", data)
     if data is False:
         return False
     # if data:
