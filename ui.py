@@ -44,13 +44,22 @@ with st.form("url_input"):
     submitted = st.form_submit_button("Add")
     if submitted:
         if is_valid_url(new_company_url):
-            success_placeholder = st.empty()
+            result = addNewCompany(new_company_url)
+            if result:
+                success_placeholder = st.empty()
 
-            addNewCompany(new_company_url)
-            success_placeholder.success(
-                "new_company" + " added on the sidebar " + "!")
-            time.sleep(1)
-            success_placeholder.empty()
+                success_placeholder.success(
+                    "new_company" + " added on the sidebar " + "!")
+                time.sleep(2)
+                success_placeholder.empty()
+            else:
+                warning_placeholder = st.empty()
+
+                warning_placeholder.warning(
+                    "No jobs in the given company at the moment!")
+                time.sleep(2)
+                warning_placeholder.empty()
+
         else:
             failure_placeholder = st.empty()
             e = RuntimeError("Please provide a valid url!")

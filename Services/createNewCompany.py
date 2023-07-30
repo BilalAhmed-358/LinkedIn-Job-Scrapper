@@ -7,7 +7,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import NoSuchElementException
 from time import sleep
+import random
 import streamlit as st
 import os
 from Services.ExtractCompanyName import extract_company_name
@@ -71,20 +73,18 @@ def generateCompanyUrl(companyUrl):
 
 def loginToLinkedin(driver):
     driver.get("https://www.linkedin.com")
-    sleep(2)
+    sleep(random.uniform(2, 3))
     # idk why the page doesn't load in the first go that's why have to refresh the page
     driver.refresh()
-    sleep(3)
+    sleep(random.uniform(2, 3))
     email, loginpassword = read_email_and_password_from_file()
     username = driver.find_element(By.ID, 'session_key')
     username.send_keys(email)
-    sleep(0.5)
     password = driver.find_element(By.ID, 'session_password')
     password.send_keys(loginpassword)
-    sleep(0.5)
     sign_in_button = driver.find_element(By.XPATH, '//*[@type="submit"]')
     sign_in_button.click()
-    sleep(10)
+    sleep(15)
 
 
 def createCompanyPage(companyName):
@@ -125,13 +125,12 @@ def scrapData(url, driver):
     driver.get(url)
     emptyJobsClassName = "org-jobs-empty-jobs-module"
     try:
-        element = driver.find_element(By.CLASS_NAME, emptyJobsClassName)
-        print("There are no jobs in this company!")
-        st.warning(
-            "There are no jobs in this company at the moment, Try again in a few days", "☹")
-        return []
-    except:
+        element = driver.find_element(
+            by=By.CLASS_NAME, value=emptyJobsClassName)
+        return False
+    except NoSuchElementException:
         print("There are jobs in this company!")
+        return True
 
 
 def addNewCompany(Url):
@@ -141,6 +140,9 @@ def addNewCompany(Url):
     driver.get(companyUrl)
     companyName = extract_company_name(companyUrl)
     data = scrapData(companyUrl, driver)
+    print("the value of data is", data)
+    if data is False:
+        return False
     # if data:
     #     createCompanyPage(companyName)
     sleep(10)
