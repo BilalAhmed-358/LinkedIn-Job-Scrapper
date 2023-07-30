@@ -2,3 +2,20 @@
 path = "ui.py"
 name = "Home"
 icon = "🏠"
+    
+[[pages]]
+path = "companies/Turingcom.py"
+name = "Turingcom"
+icon = ""
+
+    
+[[pages]]
+path = "companies/Cisco.py"
+name = "Cisco"
+icon = ""
+
+    
+[[pages]]
+path = "companies/Microsoft.py"
+name = "Microsoft"
+icon = ""

@@ -87,19 +87,25 @@ def loginToLinkedin(driver):
     sleep(15)
 
 
-def createCompanyPage(companyName):
+def createCompanyPage(companyName, link_data):
     fileName = companyName+".py"
     # creating the separate page for the company
     filePath = os.path.join("companies", fileName)
-
     # writing the boiler plate code that will be present in the company page
+    job_list = []
+    for i in range(min(3, len(link_data))):
+        job_entry = f"JOB: {i}, {link_data[i]}"
+        job_list.append(job_entry)
     file_code = f"""
 import streamlit as st
 from st_pages import add_page_title
 
 add_page_title(layout="wide")
-
+job_list_for_company= {job_list}
 st.write("This is the page for {companyName} company")
+st.write("The following jobs are available in the company")
+for i in range(len(job_list_for_company)):
+    st.write(job_list_for_company[i])
 """
     if not os.path.exists(filePath):
         with open(filePath, "w") as file:
@@ -131,7 +137,7 @@ def scrapData(url, driver):
         return False
     # Here I will scrap the jobs and them in a data structure
     except NoSuchElementException:
-        print("There are jobs in this company!")
+        # print("There are jobs in this company!")
         # Get the element by the JS selector
         # print("Now selecting the job, hopefully everything goes well")
         job_list = driver.find_element(
@@ -139,7 +145,6 @@ def scrapData(url, driver):
         children = job_list.find_elements(By.XPATH, '*')
         noOfChildren = len(children)
         limitOfJobs = min(noOfChildren, 3)
-        print("Limit is ", limitOfJobs)
         job_links = []
         for i in range(3):
             post_link = driver.find_element(
@@ -170,7 +175,7 @@ def addNewCompany(Url):
     # print("the value of data is", data)
     if data is False:
         return False
-    # if data:
-    #     createCompanyPage(companyName)
+    else:
+        createCompanyPage(companyName, data)
     sleep(10)
     close_driver(driver)
