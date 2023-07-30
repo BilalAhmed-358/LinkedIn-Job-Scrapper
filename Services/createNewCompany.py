@@ -124,12 +124,27 @@ icon = ""
 def scrapData(url, driver):
     driver.get(url)
     emptyJobsClassName = "org-jobs-empty-jobs-module"
+    # checking if there are any jobs posted the function will return false if there are no jobs
     try:
         element = driver.find_element(
             by=By.CLASS_NAME, value=emptyJobsClassName)
         return False
+    # Here I will scrap the jobs and them in a data structure
     except NoSuchElementException:
         print("There are jobs in this company!")
+        # Get the element by the JS selector
+        print("Now selecting the job, hopefully everything goes well")
+        element = driver.find_element(
+            By.CLASS_NAME, "artdeco-carousel__slider")
+        child_elements = element.find_element(By.XPATH, ".//*")
+        for i in child_elements:
+            print(i)
+        print("chal gaya!")
+        # # Get the href attribute of the element
+        # href = element.get_attribute("href")
+
+        # # Print the href attribute
+        # print(href)
         return True
 
 
