@@ -50,3 +50,9 @@ All you need is to provide the link of the company's linkedin page, and it will 
    and hit `Enter` key
 
 12. The webdriver may require you to bypass the linkedin human detection check which you'll have to perform manually.
+
+   ![Linkedin Security Check](Screenshots/Linkedin%20Security%20check.png)
+
+13. Once the jobs have been scrapped, a new page for the company will be created which you can access via the side menu, the clickable link of each job will also be added on the page of the company. You can scrap and save as many companies as you want.
+
+   ![Microsoft](Screenshots/Microsoft.png)
