@@ -13,3 +13,7 @@ All you need is to provide the link of the company's linkedin page, and it will 
 3. Clone the repo using the following command 
    
    `git clone https://github.com/BilalAhmed-358/LinkedIn-Job-Scrapper.git`
+4. Create a new file 'credentials.txt' inside the root of the folder
+   ![credentials](Screenshots/credentials.png)
+5. Type the email of your linkedin account on the first line of the file and the password on the second line of the file 
+   ![email and password](Screenshots/email%20password.png)
