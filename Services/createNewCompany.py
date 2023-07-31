@@ -88,7 +88,7 @@ def loginToLinkedin(driver):
 
 
 def createCompanyPage(companyName, link_data):
-    new_File=True
+    new_File = True
     fileName = companyName+".py"
     # creating the separate page for the company
     filePath = os.path.join("companies", fileName)
@@ -112,7 +112,16 @@ for i in range(len(job_list_for_company)):
         with open(filePath, "w") as file:
             file.write(file_code)
     else:
-        new_File=False
+        new_File = False
+        with open(filePath, "a") as file:
+            file_code_update = f"""
+job_list_for_company= {job_list}
+st.write("This is the page for {companyName} company")
+st.write("The following jobs are available in the company")
+for i in range(len(job_list_for_company)):
+    st.write(job_list_for_company[i])
+"""
+            file.write(file_code_update)
         print(f"The company {companyName} already exists in the directory")
 
     # modifying the pages.toml file to show the newly added page in the side menu

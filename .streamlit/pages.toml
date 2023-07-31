@@ -19,3 +19,9 @@ icon = ""
 path = "companies/Microsoft.py"
 name = "Microsoft"
 icon = ""
+
+    
+[[pages]]
+path = "companies/Twilio-inc-.py"
+name = "Twilio-inc-"
+icon = ""
