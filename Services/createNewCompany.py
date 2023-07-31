@@ -95,7 +95,7 @@ def createCompanyPage(companyName, link_data):
     # writing the boiler plate code that will be present in the company page
     job_list = []
     for i in range(min(3, len(link_data))):
-        job_entry = f"JOB: {i}, {link_data[i]}"
+        job_entry = f"JOB {i+1} \nLink: {link_data[i]}"
         job_list.append(job_entry)
     file_code = f"""
 import streamlit as st
@@ -115,9 +115,6 @@ for i in range(len(job_list_for_company)):
         new_File = False
         with open(filePath, "a") as file:
             file_code_update = f"""
-job_list_for_company= {job_list}
-st.write("This is the page for {companyName} company")
-st.write("The following jobs are available in the company")
 for i in range(len(job_list_for_company)):
     st.write(job_list_for_company[i])
 """
@@ -189,5 +186,5 @@ def addNewCompany(Url):
         return False
     else:
         createCompanyPage(companyName, data)
-    sleep(10)
+    # sleep(10)
     close_driver(driver)

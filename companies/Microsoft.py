@@ -14,3 +14,9 @@ st.write("This is the page for Microsoft company")
 st.write("The following jobs are available in the company")
 for i in range(len(job_list_for_company)):
     st.write(job_list_for_company[i])
+
+for i in range(len(job_list_for_company)):
+    st.write(job_list_for_company[i])
+
+for i in range(len(job_list_for_company)):
+    st.write(job_list_for_company[i])

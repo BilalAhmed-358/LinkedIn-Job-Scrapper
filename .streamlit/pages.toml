@@ -25,3 +25,9 @@ icon = ""
 path = "companies/Twilio-inc-.py"
 name = "Twilio-inc-"
 icon = ""
+
+    
+[[pages]]
+path = "companies/Segment-io.py"
+name = "Segment-io"
+icon = ""
