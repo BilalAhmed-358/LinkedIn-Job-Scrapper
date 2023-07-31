@@ -2,38 +2,3 @@
 path = "ui.py"
 name = "Home"
 icon = "🏠"
-    
-[[pages]]
-path = "companies/Turingcom.py"
-name = "Turingcom"
-icon = ""
-
-    
-[[pages]]
-path = "companies/Cisco.py"
-name = "Cisco"
-icon = ""
-
-    
-[[pages]]
-path = "companies/Microsoft.py"
-name = "Microsoft"
-icon = ""
-
-    
-[[pages]]
-path = "companies/Twilio-inc-.py"
-name = "Twilio-inc-"
-icon = ""
-
-    
-[[pages]]
-path = "companies/Segment-io.py"
-name = "Segment-io"
-icon = ""
-
-    
-[[pages]]
-path = "companies/Contoursoftware.py"
-name = "Contoursoftware"
-icon = ""
