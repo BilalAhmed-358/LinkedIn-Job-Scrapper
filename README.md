@@ -34,3 +34,7 @@ All you need is to provide the link of the company's linkedin page, and it will 
 8. Install all the dependencies required for the project
    
    `pip install -r .\requirements.txt`
+
+9. Run the app using the following command
+
+   `streamlit run .\ui.py`
