@@ -21,9 +21,16 @@ All you need is to provide the link of the company's linkedin page, and it will 
    
    ![email and password](Screenshots/email%20password.png)
 
-6. Set up a virtual environment by running the following commands:
+6. Set up a virtual environment on windows by running the following commands:
    
    `python -m venv env`
 
    Here `env` is the name of our virtual environment
 
+7. Now lets activate our virtual environment
+   
+   `.\env\Scripts\Activate`
+
+8. Install all the dependencies required for the project
+   
+   `pip install -r .\requirements.txt`
