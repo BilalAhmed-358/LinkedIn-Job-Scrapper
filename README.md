@@ -18,6 +18,12 @@ All you need is to provide the link of the company's linkedin page, and it will 
    ![credentials](Screenshots/credentials.png)
 
 5. Type the email of your linkedin account on the first line of the file and the password on the second line of the file 
+   
    ![email and password](Screenshots/email%20password.png)
 
-6. Something something
+6. Set up a virtual environment by running the following commands:
+   
+   `python -m venv env`
+
+   Here `env` is the name of our virtual environment
+
