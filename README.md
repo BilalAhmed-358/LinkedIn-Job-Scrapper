@@ -42,3 +42,11 @@ All you need is to provide the link of the company's linkedin page, and it will 
 10. The app's homepage looks like this
     
     ![homepage](Screenshots/Homepage.png)
+
+11. Paste/Type the url of the company you want to scrap jobs for, keep in mind that the format of the link should be in the following format
+    
+   `https://www.linkedin.com/company/<companyname>`
+
+   and hit `Enter` key
+
+12. The webdriver may require you to bypass the linkedin human detection check which you'll have to perform manually.
