@@ -2,3 +2,9 @@
 path = "ui.py"
 name = "Home"
 icon = "🏠"
+
+    
+[[pages]]
+path = "companies/Microsoft.py"
+name = "Microsoft"
+icon = ""
