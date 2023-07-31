@@ -155,7 +155,7 @@ def scrapData(url, driver):
         noOfChildren = len(children)
         limitOfJobs = min(noOfChildren, 3)
         job_links = []
-        for i in range(3):
+        for i in range(limitOfJobs):
             post_link = driver.find_element(
                 By.CSS_SELECTOR, f".artdeco-carousel__slider>li[data-item-index='{i}']>.artdeco-carousel__item-container>.full-height>.full-height>.job-card-container>.job-card-square__main>a")
             href = post_link.get_attribute("href")
