@@ -31,3 +31,9 @@ icon = ""
 path = "companies/Segment-io.py"
 name = "Segment-io"
 icon = ""
+
+    
+[[pages]]
+path = "companies/Contoursoftware.py"
+name = "Contoursoftware"
+icon = ""
