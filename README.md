@@ -1,7 +1,7 @@
 # LinkScrappy: Your personalized Linkedin Job Scrapper
 
 ## Introduction
-Are you tired of regularly checking Linkedin pages of companies for  newly post jobs?
+Are you tired of regularly checking Linkedin pages of companies for  newly posted jobs?
 
 Link Scrappy is your answer!
 
